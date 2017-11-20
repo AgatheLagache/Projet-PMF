@@ -10,36 +10,43 @@ public class View {
 
     }
 
-    public void Display() throws Exception {
-        try {
-            final Window window = new Window();
-            window.initialize();
-            window.frame.setVisible(true);
-        } catch (final Exception e) {
-            e.printStackTrace();
 
-        }
-    }
+	protected Model model;
 
-    public int InputIemperature() {
-        return 0;
+	public View(final Model model) {
+		this.setModel(this.model);
+	}
 
-    }
+	public void Display() throws Exception {
+		try {
+			final Window window = new Window();
+			window.initialize();
+			window.frame.setVisible(true);
+		} catch (final Exception e) {
+			e.printStackTrace();
 
-    public void Button() {
+		}
 
-    }
+	}
 
-    public void Label() {
+	public int InputIemperature() {
+		return 0;
+	}
 
-    }
+	public void Button() {
 
-    protected Model getModel() {
-        return this.model;
-    }
+	}
 
-    protected void setModel(Model model) {
-        this.model = model;
-    }
+	public void Label() {
+
+	}
+
+	public Model getModel() {
+		return this.model;
+	}
+
+	public void setModel(final Model model) {
+		this.model = model;
+	}
 
 }
