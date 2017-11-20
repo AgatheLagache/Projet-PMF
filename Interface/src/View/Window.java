@@ -13,23 +13,23 @@ import javax.swing.SwingConstants;
 public class Window {
 
     public JTextField getTxtAttentionApparitionDe() {
-        return this.txtAttentionApparitionDe;
+        return this.txtAttentionCondensation;
     }
 
     public void setTxtAttentionApparitionDe(final JTextField txtAttentionApparitionDe) {
-        this.txtAttentionApparitionDe = txtAttentionApparitionDe;
+        this.txtAttentionCondensation = txtAttentionApparitionDe;
     }
 
     JFrame             frame;
-    private JTextField txtTemprtaureActuelleDe;
-    private JTextField txtTempratureDuModule;
-    private JTextField txtTempratureActuelleDu;
-    private JTextField txtTempratureDsire;
-    private JTextField txtAttentionApparitionDe;
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField textField_2;
-    private JTextField textField_3;
+    private JTextField txtTempExt;
+    private JTextField txtTempModulePeltier;
+    private JTextField txtTempIntern;
+    private JTextField txtTempChoseByUser;
+    private JTextField txtAttentionCondensation;
+    private JTextField textFieldTempDesire;
+    private JTextField textFieldTempModulePeltier;
+    private JTextField textFieldTempFridge;
+    private JTextField textFieldTempExtern;
     public int         temp_frigo    = 18;
     private final int  temp_actuelle = 18;
 
@@ -58,88 +58,87 @@ public class Window {
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.getContentPane().setLayout(null);
 
-        this.txtTemprtaureActuelleDe = new JTextField();
-        this.txtTemprtaureActuelleDe.setBackground(Color.BLACK);
-        this.txtTemprtaureActuelleDe.setForeground(Color.WHITE);
-        this.txtTemprtaureActuelleDe.setHorizontalAlignment(SwingConstants.CENTER);
-        this.txtTemprtaureActuelleDe.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.txtTemprtaureActuelleDe.setText("Temp\u00E9rtaure actuelle de la pi\u00E8ce");
-        this.txtTemprtaureActuelleDe.setBounds(10, 107, 775, 37);
-        this.frame.getContentPane().add(this.txtTemprtaureActuelleDe);
-        this.txtTemprtaureActuelleDe.setColumns(10);
+        this.txtTempExt = new JTextField();
+        this.txtTempExt.setBackground(Color.BLACK);
+        this.txtTempExt.setForeground(Color.WHITE);
+        this.txtTempExt.setHorizontalAlignment(SwingConstants.CENTER);
+        this.txtTempExt.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.txtTempExt.setText("Temp\u00E9rtaure actuelle de la pi\u00E8ce");
+        this.txtTempExt.setBounds(10, 107, 775, 37);
+        this.frame.getContentPane().add(this.txtTempExt);
+        this.txtTempExt.setColumns(10);
 
-        this.txtTempratureDuModule = new JTextField();
-        this.txtTempratureDuModule.setHorizontalAlignment(SwingConstants.CENTER);
-        this.txtTempratureDuModule.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.txtTempratureDuModule.setForeground(Color.WHITE);
-        this.txtTempratureDuModule.setBackground(Color.BLACK);
-        this.txtTempratureDuModule.setText("Temp\u00E9rature du module Peltier");
-        this.txtTempratureDuModule.setBounds(10, 203, 775, 37);
-        this.frame.getContentPane().add(this.txtTempratureDuModule);
-        this.txtTempratureDuModule.setColumns(10);
+        this.txtTempModulePeltier = new JTextField();
+        this.txtTempModulePeltier.setHorizontalAlignment(SwingConstants.CENTER);
+        this.txtTempModulePeltier.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.txtTempModulePeltier.setForeground(Color.WHITE);
+        this.txtTempModulePeltier.setBackground(Color.BLACK);
+        this.txtTempModulePeltier.setText("Temp\u00E9rature du module Peltier");
+        this.txtTempModulePeltier.setBounds(10, 203, 775, 37);
+        this.frame.getContentPane().add(this.txtTempModulePeltier);
+        this.txtTempModulePeltier.setColumns(10);
 
-        this.txtTempratureActuelleDu = new JTextField();
-        this.txtTempratureActuelleDu.setHorizontalAlignment(SwingConstants.CENTER);
-        this.txtTempratureActuelleDu.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.txtTempratureActuelleDu.setBackground(Color.BLACK);
-        this.txtTempratureActuelleDu.setForeground(Color.WHITE);
-        this.txtTempratureActuelleDu.setText("Temp\u00E9rature actuelle du r\u00E9frig\u00E9rateur");
-        this.txtTempratureActuelleDu.setBounds(10, 11, 775, 37);
-        this.frame.getContentPane().add(this.txtTempratureActuelleDu);
-        this.txtTempratureActuelleDu.setColumns(10);
+        this.txtTempIntern = new JTextField();
+        this.txtTempIntern.setHorizontalAlignment(SwingConstants.CENTER);
+        this.txtTempIntern.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.txtTempIntern.setBackground(Color.BLACK);
+        this.txtTempIntern.setForeground(Color.WHITE);
+        this.txtTempIntern.setText("Temp\u00E9rature actuelle du r\u00E9frig\u00E9rateur");
+        this.txtTempIntern.setBounds(10, 11, 775, 37);
+        this.frame.getContentPane().add(this.txtTempIntern);
+        this.txtTempIntern.setColumns(10);
 
-        this.txtTempratureDsire = new JTextField();
-        this.txtTempratureDsire.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.txtTempratureDsire.setBackground(Color.GRAY);
-        this.txtTempratureDsire.setForeground(Color.WHITE);
-        this.txtTempratureDsire.setHorizontalAlignment(SwingConstants.CENTER);
-        this.txtTempratureDsire.setText("Temp\u00E9rature d\u00E9sir\u00E9e");
-        this.txtTempratureDsire.setBounds(10, 321, 775, 37);
-        this.frame.getContentPane().add(this.txtTempratureDsire);
-        this.txtTempratureDsire.setColumns(10);
+        this.txtTempChoseByUser = new JTextField();
+        this.txtTempChoseByUser.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.txtTempChoseByUser.setBackground(Color.GRAY);
+        this.txtTempChoseByUser.setForeground(Color.WHITE);
+        this.txtTempChoseByUser.setHorizontalAlignment(SwingConstants.CENTER);
+        this.txtTempChoseByUser.setText("Temp\u00E9rature d\u00E9sir\u00E9e");
+        this.txtTempChoseByUser.setBounds(10, 321, 775, 37);
+        this.frame.getContentPane().add(this.txtTempChoseByUser);
+        this.txtTempChoseByUser.setColumns(10);
 
-        this.txtAttentionApparitionDe = new JTextField();
-        this.txtAttentionApparitionDe.setEditable(false);
-        this.txtAttentionApparitionDe.setHorizontalAlignment(SwingConstants.CENTER);
-        this.txtAttentionApparitionDe.setForeground(Color.RED);
-        this.txtAttentionApparitionDe.setFont(new Font("Tahoma", Font.PLAIN, 24));
-        this.txtAttentionApparitionDe.setText("ATTENTION, APPARITION DE CONDENSATION DETECTEE");
-        this.txtAttentionApparitionDe.setBounds(10, 446, 775, 48);
-        this.frame.getContentPane().add(this.txtAttentionApparitionDe);
-        this.txtAttentionApparitionDe.setColumns(10);
+        this.txtAttentionCondensation = new JTextField();
+        this.txtAttentionCondensation.setEditable(false);
+        this.txtAttentionCondensation.setHorizontalAlignment(SwingConstants.CENTER);
+        this.txtAttentionCondensation.setForeground(Color.RED);
+        this.txtAttentionCondensation.setFont(new Font("Tahoma", Font.PLAIN, 24));
+        this.txtAttentionCondensation.setText("ATTENTION, APPARITION DE CONDENSATION DETECTEE");
+        this.txtAttentionCondensation.setBounds(10, 446, 775, 48);
+        this.frame.getContentPane().add(this.txtAttentionCondensation);
+        this.txtAttentionCondensation.setColumns(10);
 
-        this.textField = new JTextField();
-        this.textField.setEditable(false);
-        this.textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.textField.setHorizontalAlignment(SwingConstants.CENTER);
-        this.textField.setBounds(221, 369, 342, 37);
-        this.frame.getContentPane().add(this.textField);
-        this.textField.setColumns(10);
+        this.textFieldTempDesire = new JTextField();
+        this.textFieldTempDesire.setEditable(false);
+        this.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.textFieldTempDesire.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textFieldTempDesire.setBounds(221, 369, 342, 37);
+        this.frame.getContentPane().add(this.textFieldTempDesire);
+        this.textFieldTempDesire.setColumns(10);
         this.getTextField().setText("" + this.temp_frigo + " °C");
 
-        this.textField_1 = new JTextField();
-        this.textField_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.textField_1.setEnabled(false);
-        this.textField_1.setBounds(221, 251, 342, 37);
-        this.frame.getContentPane().add(this.textField_1);
-        this.textField_1.setColumns(10);
+        this.textFieldTempDesire = new JTextField();
+        this.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.textFieldTempDesire.setEnabled(false);
+        this.textFieldTempDesire.setBounds(221, 251, 342, 37);
+        this.frame.getContentPane().add(this.textFieldTempDesire);
+        this.textFieldTempDesire.setColumns(10);
 
-        this.textField_2 = new JTextField();
-        this.textField_2.setEditable(false);
-        this.textField_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-        this.textField_2.setBounds(221, 59, 342, 37);
-        this.frame.getContentPane().add(this.textField_2);
-        this.textField_2.setColumns(10);
-        this.textField_2.setText("" + this.temp_actuelle + "°C");
+        this.textFieldTempFridge = new JTextField();
+        this.textFieldTempFridge.setEditable(false);
+        this.textFieldTempFridge.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.textFieldTempFridge.setHorizontalAlignment(SwingConstants.CENTER);
+        this.textFieldTempFridge.setBounds(221, 59, 342, 37);
+        this.frame.getContentPane().add(this.textFieldTempFridge);
+        this.textFieldTempFridge.setColumns(10);
+        this.textFieldTempFridge.setText("" + this.temp_actuelle + "°C");
 
-        this.textField_3 = new JTextField();
-        this.textField_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.textField_3.setEnabled(false);
-        this.textField_3.setBounds(221, 155, 342, 37);
-        this.frame.getContentPane().add(this.textField_3);
-        this.textField_3.setColumns(10);
-
+        this.textFieldTempExtern = new JTextField();
+        this.textFieldTempExtern.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.textFieldTempExtern.setEnabled(false);
+        this.textFieldTempExtern.setBounds(221, 155, 342, 37);
+        this.frame.getContentPane().add(this.textFieldTempExtern);
+        this.textFieldTempExtern.setColumns(10);
     }
 
     public void clickPlusButton() {
@@ -157,19 +156,19 @@ public class Window {
     }
 
     public JTextField getTextField() {
-        return this.textField;
+        return this.textFieldTempDesire;
     }
 
     public void setTextField(final JTextField textField) {
-        this.textField = textField;
+        this.textFieldTempDesire = textField;
     }
 
     public JTextField getTextField_2() {
-        return this.textField_2;
+        return this.textFieldTempFridge;
     }
 
     public void setTextField_2(final JTextField textField_2) {
-        this.textField_2 = textField_2;
+        this.textFieldTempFridge = textField_2;
     }
 
     public void PlusButton() { // Affiche le bouton + sur l'interface

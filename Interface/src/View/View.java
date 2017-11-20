@@ -11,35 +11,13 @@ public class View {
     }
 
     public void Display() throws Exception {
-        try {
-            final Window window = new Window();
 
-            window.FrameCreation();
-            window.frame.setVisible(true);
-            window.PlusButton();
-            window.LessButton();
+        final Window window = new Window();
 
-        } catch (final Exception e) {
-            e.printStackTrace();
-
-        }
-
-    }
-
-    public int InputIemperature() {
-        return 0;
-    }
-
-    public void Button() {
-
-    }
-
-    public void Label() {
-
-    }
-
-    public Model getModel() {
-        return this.model;
+        window.FrameCreation();
+        window.frame.setVisible(true);
+        window.PlusButton();
+        window.LessButton();
     }
 
     public void setModel(final Model model) {
