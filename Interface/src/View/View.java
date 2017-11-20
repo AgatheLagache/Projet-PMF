@@ -10,43 +10,40 @@ public class View {
 
     }
 
+    public void Display() throws Exception {
+        try {
+            final Window window = new Window();
 
-	protected Model model;
+            window.FrameCreation();
+            window.frame.setVisible(true);
+            window.PlusButton();
+            window.LessButton();
 
-	public View(final Model model) {
-		this.setModel(this.model);
-	}
+        } catch (final Exception e) {
+            e.printStackTrace();
 
-	public void Display() throws Exception {
-		try {
-			final Window window = new Window();
-			window.initialize();
-			window.frame.setVisible(true);
-		} catch (final Exception e) {
-			e.printStackTrace();
+        }
 
-		}
+    }
 
-	}
+    public int InputIemperature() {
+        return 0;
+    }
 
-	public int InputIemperature() {
-		return 0;
-	}
+    public void Button() {
 
-	public void Button() {
+    }
 
-	}
+    public void Label() {
 
-	public void Label() {
+    }
 
-	}
+    public Model getModel() {
+        return this.model;
+    }
 
-	public Model getModel() {
-		return this.model;
-	}
-
-	public void setModel(final Model model) {
-		this.model = model;
-	}
+    public void setModel(final Model model) {
+        this.model = model;
+    }
 
 }
