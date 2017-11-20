@@ -30,18 +30,18 @@ public class Window {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	public int         temp_frigo    = 0;
+	public int         temp_frigo    = 18;
 	private final int  temp_actuelle = 18;
 
 	/**
 	 * Launch the application.
 	 */
 
-	 /**
-	  * Create the application.
-	  *
-	  * @throws Exception
-	  */
+	/**
+	 * Create the application.
+	 *
+	 * @throws Exception
+	 */
 	public Window() throws Exception {
 		this.initialize();
 	}
@@ -52,7 +52,6 @@ public class Window {
 	 * @throws Exception
 	 */
 	public void initialize() throws Exception {
-		System.out.println("Je suis dans initialize");
 		this.frame = new JFrame();
 		this.frame.getContentPane().setBackground(Color.BLACK);
 		this.frame.setBounds(100, 100, 811, 544);
@@ -128,18 +127,6 @@ public class Window {
 		this.txtAttentionApparitionDe = new JTextField();
 		this.txtAttentionApparitionDe.setEditable(false);
 		this.txtAttentionApparitionDe.setHorizontalAlignment(SwingConstants.CENTER);
-		if (this.temp_actuelle >= this.temp_frigo + 2 || this.temp_actuelle <= this.temp_frigo - 2) {
-			Thread.sleep(1000);
-			this.getTxtAttentionApparitionDe().setBackground(Color.BLACK);
-			// this.txtAttentionApparitionDe.setBackground(Color.BLACK);
-			Thread.sleep(1000);
-			// this.txtAttentionApparitionDe.setBackground(Color.RED);
-			this.getTxtAttentionApparitionDe().setBackground(Color.BLACK);
-
-		} else {
-			this.txtAttentionApparitionDe.setBackground(Color.BLACK);
-		}
-
 		this.txtAttentionApparitionDe.setForeground(Color.RED);
 		this.txtAttentionApparitionDe.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		this.txtAttentionApparitionDe.setText("ATTENTION, APPARITION DE CONDENSATION DETECTEE");
@@ -178,7 +165,6 @@ public class Window {
 		this.textField_3.setBounds(221, 155, 342, 37);
 		this.frame.getContentPane().add(this.textField_3);
 		this.textField_3.setColumns(10);
-		System.out.println("Je suis a la fin de initialize");
 
 	}
 

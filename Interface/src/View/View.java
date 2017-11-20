@@ -1,6 +1,14 @@
 package View;
 
+import Model.Model;
+
 public class View {
+
+	protected Model model;
+
+	public View(final Model model) {
+		this.setModel(this.model);
+	}
 
 	public void Display() throws Exception {
 		try {
@@ -11,8 +19,6 @@ public class View {
 			e.printStackTrace();
 
 		}
-
-
 
 	}
 
@@ -29,4 +35,11 @@ public class View {
 
 	}
 
+	public Model getModel() {
+		return this.model;
+	}
+
+	public void setModel(final Model model) {
+		this.model = model;
+	}
 }
