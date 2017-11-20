@@ -31,7 +31,7 @@ public class Window {
     private JTextField textField_2;
     private JTextField textField_3;
     public int         temp_frigo    = 0;
-    private final int  temp_actuelle = 18;
+    private final int  temp_actuelle = 0;
 
     /**
      * Launch the application.
@@ -52,7 +52,6 @@ public class Window {
      * @throws Exception
      */
     public void initialize() throws Exception {
-        System.out.println("Je suis dans initialize");
         this.frame = new JFrame();
         this.frame.getContentPane().setBackground(Color.BLACK);
         this.frame.setBounds(100, 100, 811, 544);
@@ -178,7 +177,6 @@ public class Window {
         this.textField_3.setBounds(221, 155, 342, 37);
         this.frame.getContentPane().add(this.textField_3);
         this.textField_3.setColumns(10);
-        System.out.println("Je suis a la fin de initialize");
 
     }
 
