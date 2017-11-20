@@ -3,6 +3,13 @@ package View;
 import Model.Model;
 
 public class View {
+    private Model model;
+
+    public View(Model model) {
+        this.setModel(model);
+
+    }
+
 
 	protected Model model;
 
@@ -24,7 +31,6 @@ public class View {
 
 	public int InputIemperature() {
 		return 0;
-
 	}
 
 	public void Button() {
@@ -42,4 +48,5 @@ public class View {
 	public void setModel(final Model model) {
 		this.model = model;
 	}
+
 }

@@ -141,7 +141,7 @@ public class Window {
 		this.textField.setBounds(221, 369, 342, 37);
 		this.frame.getContentPane().add(this.textField);
 		this.textField.setColumns(10);
-		this.getTextField().setText("" + this.temp_frigo + " 캜");
+		this.getTextField().setText("" + this.temp_frigo + " 째C");
 
 		this.textField_1 = new JTextField();
 		this.textField_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -157,7 +157,7 @@ public class Window {
 		this.textField_2.setBounds(221, 59, 342, 37);
 		this.frame.getContentPane().add(this.textField_2);
 		this.textField_2.setColumns(10);
-		this.textField_2.setText("" + this.temp_actuelle + " 캜");
+		this.textField_2.setText("" + this.temp_actuelle + " 째C");
 
 		this.textField_3 = new JTextField();
 		this.textField_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -170,15 +170,15 @@ public class Window {
 
 	public void clickPlusButton() {
 		this.temp_frigo++;
-		this.getTextField().setText("" + this.temp_frigo + " 캜");
+		this.getTextField().setText("" + this.temp_frigo + " 째C");
 	}
 
 	public void clickMinusButton() {
 		if (this.temp_frigo == 0) {
-			this.getTextField().setText("" + this.temp_frigo + " 캜");
+			this.getTextField().setText("" + this.temp_frigo + " 째C");
 		} else {
 			this.temp_frigo--;
-			this.getTextField().setText("" + this.temp_frigo + " 캜");
+			this.getTextField().setText("" + this.temp_frigo + " 째C");
 		}
 	}
 

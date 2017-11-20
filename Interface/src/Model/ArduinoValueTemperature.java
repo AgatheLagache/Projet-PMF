@@ -1,11 +1,11 @@
 package Model;
 
 public class ArduinoValueTemperature extends ArduinoValue {
-    public int   CoeffConvTemp;
-    public Value FidgeTemperature;
-    public Value PeltierTemperature;
-    public Value RoomTemperature;
-    public Value MaxFridgeTemperature;
+    public int CoeffConvTemp;
+    public int FidgeTemperature = 15;
+    public int PeltierTemperature;
+    public int RoomTemperature;
+    public int MaxFridgeTemperature;
 
     protected int getCoeffConvTemp() {
         return this.CoeffConvTemp;
@@ -15,35 +15,35 @@ public class ArduinoValueTemperature extends ArduinoValue {
         this.CoeffConvTemp = coeffConvTemp;
     }
 
-    protected Value getFidgeTemperature() {
+    protected int getFidgeTemperature() {
         return this.FidgeTemperature;
     }
 
-    protected void setFidgeTemperature(Value fidgeTemperature) {
+    protected void setFidgeTemperature(int fidgeTemperature) {
         this.FidgeTemperature = fidgeTemperature;
     }
 
-    protected Value getPeltierTemperature() {
+    protected int getPeltierTemperature() {
         return this.PeltierTemperature;
     }
 
-    protected void setPeltierTemperature(Value peltierTemperature) {
+    protected void setPeltierTemperature(int peltierTemperature) {
         this.PeltierTemperature = peltierTemperature;
     }
 
-    protected Value getRoomTemperature() {
+    protected int getRoomTemperature() {
         return this.RoomTemperature;
     }
 
-    protected void setRoomTemperature(Value roomTemperature) {
+    protected void setRoomTemperature(int roomTemperature) {
         this.RoomTemperature = roomTemperature;
     }
 
-    protected Value getMaxFridgeTemperature() {
+    protected int getMaxFridgeTemperature() {
         return this.MaxFridgeTemperature;
     }
 
-    protected void setMaxFridgeTemperature(Value maxFridgeTemperature) {
+    protected void setMaxFridgeTemperature(int maxFridgeTemperature) {
         this.MaxFridgeTemperature = maxFridgeTemperature;
     }
 
