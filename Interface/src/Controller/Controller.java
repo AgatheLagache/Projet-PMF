@@ -1,6 +1,6 @@
-package Controler;
+package Controller;
 
-public class Controler {
+public class Controller {
 
     public void MaintainTemperature() {
 
