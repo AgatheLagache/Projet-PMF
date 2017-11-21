@@ -15,7 +15,7 @@ public class ArduinoCommunication implements SerialPortEventListener {
 
 	SerialPort serialPort;
 	/** The port we're normally going to use. */
-	private static final String PORT_NAMES[] = { "COM3" // Windows
+	private static final String PORT_NAMES[] = { "COM4" // Windows
 	};
 	/**
 	 * A BufferedReader which will be fed by a InputStreamReader converting the
@@ -23,7 +23,7 @@ public class ArduinoCommunication implements SerialPortEventListener {
 	 */
 	private BufferedReader input;
 	/** The output stream to the port */
-	private OutputStream output;
+	public static OutputStream output;
 	private String temp_ext;
 	private String temp_int;
 	private String temp_peltier;
@@ -86,16 +86,14 @@ public class ArduinoCommunication implements SerialPortEventListener {
 				final String inputLine = this.input.readLine();
 				final String[] tab = inputLine.split("/");
 				this.temp_ext = tab[0];
-				this.temp_int = tab[1];
-				this.temp_peltier = tab[2];
+				this.temp_peltier = tab[1];
+				this.temp_int= tab[2];
 				this.condensation = tab[3];
-				System.out.println(this.temp_peltier);
+				System.out.println(inputLine);
 				Window.textFieldTempExtern.setText("" + this.temp_ext + " °C");
 				Window.textFieldTempFridge.setText("" + this.temp_int + " °C");
 				Window.textFieldTempModulePeltier.setText("" + this.temp_peltier + " °C");
-				System.out.println(this.condensation);
 				if (this.mauvais.equals(this.condensation)) {
-					System.out.println("cc");
 					Window.txtAttentionCondensation.setVisible(true);
 				} else if (this.bon.equals(this.condensation)) {
 					Window.txtAttentionCondensation.setVisible(false);

@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import Model.ArduinoCommunication;
 
 public class Window {
 
@@ -157,17 +160,19 @@ public class Window {
 		Window.textFieldTempExtern.setColumns(10);
 	}
 
-	public void clickPlusButton() {
+	public void clickPlusButton() throws Exception {
 		this.temp_frigo++;
 		this.getTextField().setText("" + this.temp_frigo + " °C");
+		ArduinoCommunication.output.write("a".getBytes());
 	}
 
-	public void clickMinusButton() {
+	public void clickMinusButton() throws IOException {
 		if (this.temp_frigo == 0) {
 			this.getTextField().setText("" + this.temp_frigo + " °C");
 		} else {
 			this.temp_frigo--;
 			this.getTextField().setText("" + this.temp_frigo + " °C");
+			ArduinoCommunication.output.write("z".getBytes());
 		}
 	}
 
@@ -207,7 +212,12 @@ public class Window {
 			@Override
 
 			public void actionPerformed(final ActionEvent e) {
-				Window.this.clickPlusButton();
+				try {
+					Window.this.clickPlusButton();
+				} catch (final Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 
@@ -221,7 +231,11 @@ public class Window {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
-				Window.this.clickMinusButton();
+				try {
+					Window.this.clickMinusButton();
+				} catch (final IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_1.setBounds(59, 369, 122, 37);
