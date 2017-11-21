@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
+import View.Window;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
@@ -23,11 +24,12 @@ public class ArduinoCommunication implements SerialPortEventListener {
 	private BufferedReader input;
 	/** The output stream to the port */
 	private OutputStream output;
+	public String temp_ext;
+	public String temp_int;
 	/** Milliseconds to block while waiting for port open */
 	private static final int TIME_OUT = 2000;
 	/** Default bits per second for COM port. */
 	private static final int DATA_RATE = 9600;
-
 
 	public void OpenCommunicationWithArduino() {
 		// the next line is for Raspberry Pi and
@@ -78,13 +80,18 @@ public class ArduinoCommunication implements SerialPortEventListener {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				final String inputLine = this.input.readLine();
-				System.out.println(inputLine);
+				final String[] tab = inputLine.split("/");
+				this.temp_ext = tab[0];
+				this.temp_int = tab[1];
+				System.out.println(this.temp_ext);
+				Window.textField_2.setText("" + this.temp_ext + " °C");
+				Window.textField_3.setText("" + this.temp_int + " °C");
+
 			} catch (final Exception e) {
 				System.err.println(e.toString());
 			}
 		}
 	}
-
 
 	public void ReceiveArduinoValues() {
 
@@ -93,8 +100,5 @@ public class ArduinoCommunication implements SerialPortEventListener {
 	public void SendValuesToArduino() {
 
 	}
-
-
-
 
 }

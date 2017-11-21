@@ -12,6 +12,14 @@ import javax.swing.SwingConstants;
 
 public class Window {
 
+	public JTextField getTextField_3() {
+		return this.textField_3;
+	}
+
+	public void setTextField_3(final JTextField textField_3) {
+		this.textField_3 = textField_3;
+	}
+
 	public JTextField getTxtAttentionApparitionDe() {
 		return this.txtAttentionApparitionDe;
 	}
@@ -28,10 +36,9 @@ public class Window {
 	private JTextField txtAttentionApparitionDe;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	public static JTextField textField_2;
+	public static JTextField textField_3;
 	public int         temp_frigo    = 18;
-	private final int  temp_actuelle = 18;
 
 	/**
 	 * Launch the application.
@@ -51,6 +58,7 @@ public class Window {
 	 *
 	 * @throws Exception
 	 */
+	//@SuppressWarnings("static-access")
 	public void initialize() throws Exception {
 		this.frame = new JFrame();
 		this.frame.getContentPane().setBackground(Color.BLACK);
@@ -141,7 +149,8 @@ public class Window {
 		this.textField.setBounds(221, 369, 342, 37);
 		this.frame.getContentPane().add(this.textField);
 		this.textField.setColumns(10);
-		this.getTextField().setText("" + this.temp_frigo + " 째C");
+		this.getTextField().setText("" + this.temp_frigo +  " 캜");
+
 
 		this.textField_1 = new JTextField();
 		this.textField_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -157,11 +166,12 @@ public class Window {
 		this.textField_2.setBounds(221, 59, 342, 37);
 		this.frame.getContentPane().add(this.textField_2);
 		this.textField_2.setColumns(10);
-		this.textField_2.setText("" + this.temp_actuelle + " 째C");
+
 
 		this.textField_3 = new JTextField();
 		this.textField_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		this.textField_3.setEnabled(false);
+		this.textField_3.setEditable(false);
+		this.textField_3.setHorizontalAlignment(SwingConstants.CENTER);
 		this.textField_3.setBounds(221, 155, 342, 37);
 		this.frame.getContentPane().add(this.textField_3);
 		this.textField_3.setColumns(10);
@@ -170,15 +180,15 @@ public class Window {
 
 	public void clickPlusButton() {
 		this.temp_frigo++;
-		this.getTextField().setText("" + this.temp_frigo + " 째C");
+		this.getTextField().setText("" + this.temp_frigo + " 캜");
 	}
 
 	public void clickMinusButton() {
 		if (this.temp_frigo == 0) {
-			this.getTextField().setText("" + this.temp_frigo + " 째C");
+			this.getTextField().setText("" + this.temp_frigo + " 캜");
 		} else {
 			this.temp_frigo--;
-			this.getTextField().setText("" + this.temp_frigo + " 째C");
+			this.getTextField().setText("" + this.temp_frigo + " 캜");
 		}
 	}
 
