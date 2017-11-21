@@ -161,18 +161,22 @@ public class Window {
 	}
 
 	public void clickPlusButton() throws Exception {
-		this.temp_frigo++;
-		this.getTextField().setText("" + this.temp_frigo + " °C");
-		ArduinoCommunication.output.write("a".getBytes());
+		if (this.temp_frigo == 19) {
+			this.getTextField().setText("" + this.temp_frigo + " °C");
+		} else {
+			this.temp_frigo++;
+			this.getTextField().setText("" + this.temp_frigo + " °C");
+			ArduinoCommunication.output.write("z".getBytes());
+		}
 	}
 
 	public void clickMinusButton() throws IOException {
-		if (this.temp_frigo == 0) {
+		if (this.temp_frigo == 17) {
 			this.getTextField().setText("" + this.temp_frigo + " °C");
 		} else {
 			this.temp_frigo--;
 			this.getTextField().setText("" + this.temp_frigo + " °C");
-			ArduinoCommunication.output.write("z".getBytes());
+			ArduinoCommunication.output.write("a".getBytes());
 		}
 	}
 
