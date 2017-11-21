@@ -57,7 +57,9 @@ public class Window {
         this.frame.setBounds(100, 100, 811, 544);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.getContentPane().setLayout(null);
+    }
 
+    public void TempExt() {
         this.txtTempExt = new JTextField();
         this.txtTempExt.setBackground(Color.BLACK);
         this.txtTempExt.setForeground(Color.WHITE);
@@ -68,6 +70,9 @@ public class Window {
         this.frame.getContentPane().add(this.txtTempExt);
         this.txtTempExt.setColumns(10);
 
+    }
+
+    public void TempModulePeltier() {
         this.txtTempModulePeltier = new JTextField();
         this.txtTempModulePeltier.setHorizontalAlignment(SwingConstants.CENTER);
         this.txtTempModulePeltier.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -77,6 +82,9 @@ public class Window {
         this.txtTempModulePeltier.setBounds(10, 203, 775, 37);
         this.frame.getContentPane().add(this.txtTempModulePeltier);
         this.txtTempModulePeltier.setColumns(10);
+    }
+
+    public void TempIntern() {
 
         this.txtTempIntern = new JTextField();
         this.txtTempIntern.setHorizontalAlignment(SwingConstants.CENTER);
@@ -87,7 +95,9 @@ public class Window {
         this.txtTempIntern.setBounds(10, 11, 775, 37);
         this.frame.getContentPane().add(this.txtTempIntern);
         this.txtTempIntern.setColumns(10);
+    }
 
+    public void TempChoseByUser() {
         this.txtTempChoseByUser = new JTextField();
         this.txtTempChoseByUser.setFont(new Font("Tahoma", Font.PLAIN, 20));
         this.txtTempChoseByUser.setBackground(Color.GRAY);
@@ -97,6 +107,9 @@ public class Window {
         this.txtTempChoseByUser.setBounds(10, 321, 775, 37);
         this.frame.getContentPane().add(this.txtTempChoseByUser);
         this.txtTempChoseByUser.setColumns(10);
+    }
+
+    public void AttentionCondensation() {
 
         this.txtAttentionCondensation = new JTextField();
         this.txtAttentionCondensation.setEditable(false);
@@ -107,7 +120,9 @@ public class Window {
         this.txtAttentionCondensation.setBounds(10, 446, 775, 48);
         this.frame.getContentPane().add(this.txtAttentionCondensation);
         this.txtAttentionCondensation.setColumns(10);
+    }
 
+    public void FieldTempDesire() {
         this.textFieldTempDesire = new JTextField();
         this.textFieldTempDesire.setEditable(false);
         this.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -116,13 +131,18 @@ public class Window {
         this.frame.getContentPane().add(this.textFieldTempDesire);
         this.textFieldTempDesire.setColumns(10);
         this.getTextField().setText("" + this.temp_frigo + " °C");
+    }
 
-        this.textFieldTempDesire = new JTextField();
-        this.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
-        this.textFieldTempDesire.setEnabled(false);
-        this.textFieldTempDesire.setBounds(221, 251, 342, 37);
-        this.frame.getContentPane().add(this.textFieldTempDesire);
-        this.textFieldTempDesire.setColumns(10);
+    public void textFieldTempModulePeltier() {
+        this.textFieldTempModulePeltier = new JTextField();
+        this.textFieldTempModulePeltier.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        this.textFieldTempModulePeltier.setEnabled(false);
+        this.textFieldTempModulePeltier.setBounds(221, 251, 342, 37);
+        this.frame.getContentPane().add(this.textFieldTempModulePeltier);
+        this.textFieldTempModulePeltier.setColumns(10);
+    }
+
+    public void FieldTempFridge() {
 
         this.textFieldTempFridge = new JTextField();
         this.textFieldTempFridge.setEditable(false);
@@ -132,6 +152,9 @@ public class Window {
         this.frame.getContentPane().add(this.textFieldTempFridge);
         this.textFieldTempFridge.setColumns(10);
         this.textFieldTempFridge.setText("" + this.temp_actuelle + "°C");
+    }
+
+    public void FieldTempExtern() {
 
         this.textFieldTempExtern = new JTextField();
         this.textFieldTempExtern.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -189,7 +212,7 @@ public class Window {
 
     }
 
-    public void LessButton() { // Affiche le bouton - sur l'interface
+    public void MinusButton() { // Affiche le bouton - sur l'interface
         final JButton btnNewButton_1 = new JButton("-");
         btnNewButton_1.setBackground(Color.RED);
         btnNewButton_1.setForeground(Color.BLACK);

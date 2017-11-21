@@ -15,9 +15,19 @@ public class View {
         final Window window = new Window();
 
         window.FrameCreation();
-        window.frame.setVisible(true);
         window.PlusButton();
-        window.LessButton();
+        window.MinusButton();
+        window.AttentionCondensation();
+        window.TempExt();
+        window.TempModulePeltier();
+        window.TempIntern();
+        window.TempChoseByUser();
+        window.AttentionCondensation();
+        window.textFieldTempModulePeltier();
+        window.FieldTempDesire();
+        window.FieldTempFridge();
+        window.FieldTempExtern();
+        window.frame.setVisible(true);
     }
 
     public void setModel(final Model model) {
