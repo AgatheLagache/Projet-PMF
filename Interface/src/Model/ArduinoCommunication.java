@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
+import View.Window;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
@@ -23,11 +24,16 @@ public class ArduinoCommunication implements SerialPortEventListener {
 	private BufferedReader input;
 	/** The output stream to the port */
 	private OutputStream output;
+	private String temp_ext;
+	private String temp_int;
+	private String temp_peltier;
+	private String condensation;
+	private final String mauvais = "mauvais";
+	private final String bon = "bon";
 	/** Milliseconds to block while waiting for port open */
 	private static final int TIME_OUT = 2000;
 	/** Default bits per second for COM port. */
 	private static final int DATA_RATE = 9600;
-
 
 	public void OpenCommunicationWithArduino() {
 		// the next line is for Raspberry Pi and
@@ -78,13 +84,28 @@ public class ArduinoCommunication implements SerialPortEventListener {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				final String inputLine = this.input.readLine();
-				System.out.println(inputLine);
+				final String[] tab = inputLine.split("/");
+				this.temp_ext = tab[0];
+				this.temp_int = tab[1];
+				this.temp_peltier = tab[2];
+				this.condensation = tab[3];
+				System.out.println(this.temp_peltier);
+				Window.textFieldTempExtern.setText("" + this.temp_ext + " °C");
+				Window.textFieldTempFridge.setText("" + this.temp_int + " °C");
+				Window.textFieldTempModulePeltier.setText("" + this.temp_peltier + " °C");
+				System.out.println(this.condensation);
+				if (this.mauvais.equals(this.condensation)) {
+					System.out.println("cc");
+					Window.txtAttentionCondensation.setVisible(true);
+				} else if (this.bon.equals(this.condensation)) {
+					Window.txtAttentionCondensation.setVisible(false);
+
+				}
 			} catch (final Exception e) {
 				System.err.println(e.toString());
 			}
 		}
 	}
-
 
 	public void ReceiveArduinoValues() {
 
@@ -93,8 +114,5 @@ public class ArduinoCommunication implements SerialPortEventListener {
 	public void SendValuesToArduino() {
 
 	}
-
-
-
 
 }
