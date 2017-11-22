@@ -5,28 +5,54 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
 
-import View.View;
+import Controller.Controller;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ArduinoCommunication.
+ */
 public class ArduinoCommunication implements SerialPortEventListener {
 
+	/** The serial port. */
 	SerialPort serialPort;
+
+	/** The Constant PORT_NAMES. */
 	private static final String PORT_NAMES[] = { "COM4" };
+
+	/** The input. */
 	private BufferedReader input;
+
+	/** The output. */
 	public static OutputStream output;
-	private String temp_ext;
-	private String temp_int;
-	private String temp_peltier;
-	private String condensation;
-	private final String mauvais = "mauvais";
-	private final String bon = "bon";
+
+	/** The temp ext. */
+	public static String temp_ext;
+
+	/** The temp int. */
+	public static String temp_int;
+
+	/** The temp peltier. */
+	public static String temp_peltier;
+
+	/** The condensation. */
+	public static String condensation;
+
+	/** The variation. */
+	public static String variation;
+
+	/** The Constant TIME_OUT. */
 	private static final int TIME_OUT = 2000;
+
+	/** The Constant DATA_RATE. */
 	private static final int DATA_RATE = 9600;
 
-	@SuppressWarnings("static-access")
+	/**
+	 * Open communication with arduino.
+	 */
 	public void OpenCommunicationWithArduino() {
 		CommPortIdentifier portId = null;
 		@SuppressWarnings("rawtypes")
@@ -51,7 +77,7 @@ public class ArduinoCommunication implements SerialPortEventListener {
 			this.serialPort.setSerialPortParams(DATA_RATE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1,
 					SerialPort.PARITY_NONE);
 			this.input = new BufferedReader(new InputStreamReader(this.serialPort.getInputStream()));
-			this.output = this.serialPort.getOutputStream();
+			ArduinoCommunication.output = this.serialPort.getOutputStream();
 			this.serialPort.addEventListener(this);
 			this.serialPort.notifyOnDataAvailable(true);
 		} catch (final Exception e) {
@@ -59,26 +85,26 @@ public class ArduinoCommunication implements SerialPortEventListener {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see gnu.io.SerialPortEventListener#serialEvent(gnu.io.SerialPortEvent)
+	 */
 	@Override
 	public synchronized void serialEvent(final SerialPortEvent oEvent) {
 		if (oEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
 			try {
 				final String inputLine = this.input.readLine();
 				final String[] tab = inputLine.split("/");
-				this.temp_ext = tab[0];
-				this.temp_peltier = tab[1];
-				this.temp_int = tab[2];
-				this.condensation = tab[3];
+				ArduinoCommunication.temp_ext = tab[0];
+				ArduinoCommunication.temp_peltier = tab[1];
+				ArduinoCommunication.temp_int = tab[2];
+				ArduinoCommunication.condensation = tab[3];
+				ArduinoCommunication.variation = tab[4];
 				System.out.println(inputLine);
-				View.textFieldTempExtern.setText("" + this.temp_ext + " °C");
-				View.textFieldTempFridge.setText("" + this.temp_int + " °C");
-				View.textFieldTempModulePeltier.setText("" + this.temp_peltier + " °C");
-				if (this.mauvais.equals(this.condensation)) {
-					View.txtAttentionCondensation.setVisible(true);
-				} else if (this.bon.equals(this.condensation)) {
-					View.txtAttentionCondensation.setVisible(false);
 
-				}
+				Controller.UpdateIHM();
+
 			} catch (final Exception e) {
 				System.err.println(e.toString());
 			}

@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import Controller.Controller;
 import Model.ArduinoCommunication;
 import Model.Model;
 
@@ -19,14 +20,6 @@ import Model.Model;
  * The Class View.
  */
 public class View {
-
-	public Model getModel() {
-		return this.model;
-	}
-
-	public void setModel(final Model model) {
-		this.model = model;
-	}
 
 	/** The frame. */
 	public JFrame frame;
@@ -46,8 +39,11 @@ public class View {
 	/** The txt attention condensation. */
 	public static JTextField txtAttentionCondensation;
 
+	/** The txt attention temperature. */
+	public static JTextField txtAttentionTemperature;
+
 	/** The text field temp desire. */
-	private JTextField textFieldTempDesire;
+	private static JTextField textFieldTempDesire;
 
 	/** The text field temp module peltier. */
 	public static JTextField textFieldTempModulePeltier;
@@ -61,10 +57,17 @@ public class View {
 	/** The temp frigo. */
 	public int temp_frigo = 18;
 
+	/** The model. */
 	Model model;
+
+	/** The controller. */
+	Controller controller;
 
 	/**
 	 * Launch the application.
+	 *
+	 * @param model
+	 *            the model
 	 */
 
 	/**
@@ -89,6 +92,7 @@ public class View {
 		this.PlusButton();
 		this.MinusButton();
 		this.AttentionCondensation();
+		this.AteentionVariationTemperature();
 		this.TempExt();
 		this.TempModulePeltier();
 		this.TempIntern();
@@ -186,23 +190,39 @@ public class View {
 		View.txtAttentionCondensation.setForeground(Color.RED);
 		View.txtAttentionCondensation.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		View.txtAttentionCondensation.setText("ATTENTION, IL Y A FORMATION DE CONDENSATION!!!");
-		View.txtAttentionCondensation.setBounds(10, 446, 775, 48);
+		View.txtAttentionCondensation.setBounds(10, 451, 775, 43);
 		this.frame.getContentPane().add(View.txtAttentionCondensation);
 		View.txtAttentionCondensation.setColumns(10);
 		View.txtAttentionCondensation.setVisible(false);
 	}
 
 	/**
+	 * Ateention variation temperature.
+	 */
+	public void AteentionVariationTemperature() {
+		View.txtAttentionTemperature = new JTextField();
+		View.txtAttentionTemperature.setEditable(false);
+		View.txtAttentionTemperature.setHorizontalAlignment(SwingConstants.CENTER);
+		View.txtAttentionTemperature.setForeground(Color.RED);
+		View.txtAttentionTemperature.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		View.txtAttentionTemperature.setText("ATTENTION, VERIFIEZ QUE LA PORTE EST FERMEE!!!");
+		View.txtAttentionTemperature.setBounds(10, 409, 775, 43);
+		this.frame.getContentPane().add(View.txtAttentionTemperature);
+		View.txtAttentionTemperature.setColumns(10);
+		View.txtAttentionTemperature.setVisible(false);
+	}
+
+	/**
 	 * Field temp desire.
 	 */
 	public void FieldTempDesire() {
-		this.textFieldTempDesire = new JTextField();
-		this.textFieldTempDesire.setEditable(false);
-		this.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		this.textFieldTempDesire.setHorizontalAlignment(SwingConstants.CENTER);
-		this.textFieldTempDesire.setBounds(221, 369, 342, 37);
-		this.frame.getContentPane().add(this.textFieldTempDesire);
-		this.textFieldTempDesire.setColumns(10);
+		View.textFieldTempDesire = new JTextField();
+		View.textFieldTempDesire.setEditable(false);
+		View.textFieldTempDesire.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		View.textFieldTempDesire.setHorizontalAlignment(SwingConstants.CENTER);
+		View.textFieldTempDesire.setBounds(221, 369, 342, 37);
+		this.frame.getContentPane().add(View.textFieldTempDesire);
+		View.textFieldTempDesire.setColumns(10);
 		this.getTextField().setText("" + this.temp_frigo + " °C");
 	}
 
@@ -253,6 +273,7 @@ public class View {
 	 * @throws Exception
 	 *             the exception
 	 */
+
 	public void clickPlusButton() throws Exception {
 		if (this.temp_frigo == 19) {
 			this.getTextField().setText("" + this.temp_frigo + " °C");
@@ -269,6 +290,7 @@ public class View {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
+
 	public void clickMinusButton() throws IOException {
 		if (this.temp_frigo == 17) {
 			this.getTextField().setText("" + this.temp_frigo + " °C");
@@ -285,7 +307,7 @@ public class View {
 	 * @return the text field
 	 */
 	public JTextField getTextField() {
-		return this.textFieldTempDesire;
+		return View.textFieldTempDesire;
 	}
 
 	/**
@@ -295,7 +317,7 @@ public class View {
 	 *            the new text field
 	 */
 	public void setTextField(final JTextField textField) {
-		this.textFieldTempDesire = textField;
+		View.textFieldTempDesire = textField;
 	}
 
 	/**
@@ -337,6 +359,25 @@ public class View {
 	}
 
 	/**
+	 * Gets the model.
+	 *
+	 * @return the model
+	 */
+	public Model getModel() {
+		return this.model;
+	}
+
+	/**
+	 * Sets the model.
+	 *
+	 * @param model
+	 *            the new model
+	 */
+	public void setModel(final Model model) {
+		this.model = model;
+	}
+
+	/**
 	 * Plus button.
 	 */
 	public void PlusButton() { // Affiche le bouton + sur l'interface
@@ -358,7 +399,6 @@ public class View {
 				}
 			}
 		});
-
 	}
 
 	/**
